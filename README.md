@@ -12,6 +12,9 @@ Usage
 
 " Execute 999@q for each file in quickfix list
 :QuickFixDo normal! 999@q
+
+" Another example, add files in quickfix list to argument list
+:QuickFixArgs
 ```
 
 License

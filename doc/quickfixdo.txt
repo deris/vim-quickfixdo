@@ -1,6 +1,6 @@
 *quickfixdo.txt*	execute Vim command for each file in quickfix list
 
-Version 0.1.0
+Version 0.2.0
 Copyright (C) 2015 deris <deris0126@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -56,21 +56,32 @@ COMMANDS					*quickfixdo-commands*
 :QuickFixDo {cmd}					*QuickFixDo*
 	Execute {cmd} for each file in quickfix list.
 
+:QuickFixArgs						*QuickFixArgs*
+	Define {arglist} for each file in quickfix list.
+
 ------------------------------------------------------------------------------
 FUNCTIONS					*quickfixdo-functions*
 
 quickfixdo#do({cmd})					*quickfixdo#do()*
 	Same as |QuickFixDo| command.
 
+quickfixdo#args()					*quickfixdo#args()*
+	Same as |QuickFixArgs| command.
+
 
 ==============================================================================
 EXAMPLES					*quickfixdo-examples*
+
+        :QuickFixArgs
 
 	:QuickFixDo normal! 999@q
 
 
 ==============================================================================
 CHANGELOG					*quickfixdo-changelog*
+
+0.2.0	2015-04-13
+- add QuickFixArgs command and quickfixdo#args() function.
 
 0.1.0	2015-04-11
 - First Version.

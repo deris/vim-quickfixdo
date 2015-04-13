@@ -1,5 +1,5 @@
 " quickfixdo - execute Vim command for each file in quickfix list
-" Version: 0.1.0
+" Version: 0.2.0
 " Copyright (C) 2015 deris <deris0126@gmail.com>
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -28,7 +28,8 @@ endif
 let g:loaded_quickfixdo = 1
 
 
-command! -nargs=1 QuickFixDo call quickfixdo#do(<f-args>)
+command! -nargs=1 QuickFixDo    call quickfixdo#do(<f-args>)
+command!          QuickFixArgs  call quickfixdo#args()
 
 
 " __END__

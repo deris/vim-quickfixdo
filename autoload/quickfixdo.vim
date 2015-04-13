@@ -1,5 +1,5 @@
 " quickfixdo - execute Vim command for each file in quickfix list
-" Version: 0.1.0
+" Version: 0.2.0
 " Copyright (C) 2015 deris <deris0126@gmail.com>
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -28,16 +28,28 @@ set cpo&vim
 " Public API {{{1
 
 function! quickfixdo#do(command)
-  let qflist = getqflist()
-  let bufnrs = map(copy(qflist), "v:val['bufnr']")
-  let bufnrs = uniq(sort(bufnrs))
-  let bufnames = filter(map(bufnrs, 'bufname(v:val)'), "v:val != ''")
+  let bufnames = s:bufnames_in_quickfix()
 
   execute 'arglocal ' join(bufnames, ' ')
   execute 'argdo ' a:command
 endfunction
 
+function! quickfixdo#args()
+  let bufnames = s:bufnames_in_quickfix()
+
+  execute 'args ' join(bufnames, ' ')
+endfunction
+
 "}}}
+
+" Private {{{1
+function! s:bufnames_in_quickfix()
+  let qflist = getqflist()
+  let bufnrs = map(qflist, "v:val['bufnr']")
+  let bufnrs = uniq(sort(bufnrs))
+  return filter(map(bufnrs, 'bufname(v:val)'), "v:val != ''")
+endfunction
+" }}}
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
